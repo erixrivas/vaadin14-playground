@@ -2,6 +2,7 @@ package com.erixrivas.vaadinplayground.views.main;
 
 import java.util.Optional;
 
+import com.erixrivas.vaadinplayground.views.layout.Layouting;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -32,7 +33,7 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @CssImport("./styles/views/main/main-view.css")
 @PWA(name = "VaadinPlayground", shortName = "VaadinPlayground", enableInstallPrompt = false)
 @JsModule("./styles/shared-styles.js")
-@Theme(value = Lumo.class, variant = Lumo.DARK)
+@Theme(value = Lumo.class, variant = Lumo.LIGHT)
 public class MainView extends AppLayout {
 
     private final Tabs menu;
@@ -85,7 +86,10 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[]{createTab("Hello World", HelloWorldView.class), createTab("About", AboutView.class)};
+        return new Tab[]{createTab("Hello World", HelloWorldView.class),
+                createTab("About", AboutView.class),
+                createTab("LayOuting", Layouting.class)
+        };
     }
 
     private static Tab createTab(String text, Class<? extends Component> navigationTarget) {

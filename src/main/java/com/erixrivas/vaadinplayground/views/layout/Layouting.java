@@ -2,8 +2,12 @@ package com.erixrivas.vaadinplayground.views.layout;
 
 import com.erixrivas.vaadinplayground.components.layout.Slide;
 import com.erixrivas.vaadinplayground.views.main.MainView;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Html;
+import com.vaadin.flow.component.datepicker.DatePicker;
+import com.vaadin.flow.component.datetimepicker.DateTimePicker;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H3;
@@ -11,9 +15,11 @@ import com.vaadin.flow.component.html.Label;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.FlexLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,7 +41,10 @@ public class Layouting extends VerticalLayout {
         drawVerticalLayout();
         drawFormLayout();
         drawFlexLayouts();
+
+
         flexLayouts.forEach(slide->add(slide));
+        formLayouts.forEach(slide->add(slide));
         //add(horizontalLayouts.,verticalLayouts,flexLayouts,formLayouts);
 
 
@@ -79,7 +88,7 @@ that applies to the container.*/
                 "layout.setAlignItems(FlexComponent.Alignment.STRETCH);"+"</div>");
         Div  divFlexAlignment = new Div();
         setDivAlignmentContentModeContent(divFlexAlignment);
-        flexLayouts.add(new Slide(new Div(htmlFlexDirection),divFlexAlignment));
+        flexLayouts.add(new Slide("FlexDivAlignmentContentMode",new Div(htmlFlexDirection),divFlexAlignment));
 
     }
 
@@ -125,26 +134,29 @@ that applies to the container.*/
     }
 
     public void drawFlexDivJustifyContentMode(){
-        Html htmlFlexDirection = new Html("<div>"+"Alignment on the primary axis\n" +
+       String text="Alignment on the primary axis\n" +
                 "\n" +
                 "flex-start: Default value. Items are positioned at the beginning of the primary axis.\n" +
                 "flex-end: Items are positioned at the end of the primary axis.\n" +
                 "justify-content: flex-end center: Items are positioned at the center of the primary axis.\n" +
-                "space-between: items are evenlydistributed in the primary axis; the first item is on the start line, the lastitem on the end line.\n" +
+                "space-between: items are evenlydistributed in the primary axis; the first item is on the start line,\n " +
+                "the lastitem on the end line.\n" +
                 "space-around: items are evenly distributed in the primary axis with equal space around them.\n" +
-                "space-evenly: items are distributed so that the spacing between any two items (and the space to the edges) is equal.\n" +
+                "space-evenly: items are distributed so that the spacing between any two items (and the space to the edges)\n" +
+                " is equal.\n" +
                 "There is a JustifyContentMode enum and a Java API for doing the alignment on the primary axis \n" +
                 "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.AROUND);\n" +
                 "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.BETWEEN);\n" +
                 "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);\n" +
                 "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.END);\n" +
                 "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.EVENLY);\n" +
-                "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.START);\n"+"</div>");
+                "layout.setJustifyContentMode(FlexComponent.JustifyContentMode.START);\n";
+        Html htmlFlexDirection = new Html("<div>"+text+"</div>");
         Div  divFlexAlignment = new Div();
         setDivJustifyContentModeContent(divFlexAlignment);
 
-
-        flexLayouts.add(new Slide(new Div(htmlFlexDirection),new Div(divFlexAlignment)));
+        //flexLayouts.add(new Slide("FlexDirection",new Div(htmlFlexDirection),divFlexDirection));
+        flexLayouts.add(new Slide("FlexDivJustifyContentMode",new Div(htmlFlexDirection),divFlexAlignment));
 
     }
 
@@ -155,7 +167,7 @@ that applies to the container.*/
 
                    FlexLayout flexLayout = generateFlexLayoutWithLabel1to3Distinct();
                    flexLayout.setJustifyContentMode(mode);
-                   flexLayout.setClassName("flex-layout");
+                //   flexLayout.setClassName("flex-layout");
                    divFlexAlignment.add(new H2("FLex justify-content:" +mode),flexLayout);
                }
         );
@@ -204,7 +216,7 @@ that applies to the container.*/
                 new H2("FLex Direction: Reverse-Row"),flexLayoutDirectionRowReverse,
                 new FlexLayout(wrapperDiv,wrapperDiv2)
         );
-        flexLayouts.add(new Slide(new Div(htmlFlexDirection),divFlexDirection));
+        flexLayouts.add(new Slide("FlexDirection",new Div(htmlFlexDirection),divFlexDirection));
 
     }
     public FlexLayout generateFlexLayoutWithLabel1to3Equals(){
@@ -232,6 +244,37 @@ that applies to the container.*/
     }
 
     private void drawFormLayout() {
+
+        drawFormLayoutBasicInfo();
+
+    }
+
+    private void drawFormLayoutBasicInfo() {
+
+        Html htmlFormLayout= new Html("<div>htmlFormLayout </div>");
+
+        Div divFormLayout = new Div();
+        FormLayout formLayout = createBasicFormLayout();
+        divFormLayout.add(formLayout);
+
+
+
+        formLayouts.add(new Slide("FlexDirection",new Div(htmlFormLayout),divFormLayout));
+    }
+
+    private FormLayout createBasicFormLayout() {
+        FormLayout formLayout = new FormLayout();
+        TextField firstName= new TextField();
+        TextField lastName= new TextField();
+        TextField email= new TextField();
+        DatePicker date = new DatePicker();
+        formLayout.addFormItem(firstName,"First Name");
+        formLayout.addFormItem(lastName,"First Name");
+        formLayout.addFormItem(date,"Date");
+        formLayout.addFormItem(email,"Email");
+        formLayout.setWidthFull();
+        return  formLayout;
+
     }
 
     private void drawVerticalLayout() {

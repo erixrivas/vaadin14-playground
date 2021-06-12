@@ -17,6 +17,8 @@ import com.vaadin.flow.router.Route;
 import com.erixrivas.vaadinplayground.views.main.MainView;
 import com.vaadin.flow.router.RouteAlias;
 import com.vaadin.flow.theme.lumo.Lumo;
+import com.wontlost.zxing.Constants;
+import com.wontlost.zxing.ZXingVaadinReader;
 
 @Route(value = "hello", layout = MainView.class)
 @PageTitle("Hello World")
@@ -29,9 +31,18 @@ public class HelloWorldView extends HorizontalLayout {
 
     public HelloWorldView() {
         addClassName("hello-world-view");
-        name = new TextField("Your name");
+        name = new TextField("Your namess");
         sayHello = new Button("Say hello");
-        add(name, sayHello);
+        ZXingVaadinReader zXingVaadin = new ZXingVaadinReader();
+        zXingVaadin.setFrom(Constants.From.camera);
+        zXingVaadin.setId("video"); //id needs to be 'video' if From.camera.
+        zXingVaadin.setWidth("350");
+        zXingVaadin.setStyle("border : 1px solid gray");
+        zXingVaadin.addValueChangeListener(e->{
+            System.out.println("=QR=:"+e.getValue());
+        });
+
+        add(name,zXingVaadin, sayHello);
         setVerticalComponentAlignment(Alignment.END, name, sayHello);
         sayHello.addClickListener(e -> {
             Notification.show("Hello " + name.getValue());
@@ -39,8 +50,9 @@ public class HelloWorldView extends HorizontalLayout {
 
 
         HelloWorld hello = new HelloWorld();
-        PaperToggleButtonElement paperToggleButtonElement = new PaperToggleButtonElement();
+
         ColorPickerElement colorPickerElement = new ColorPickerElement();
+        PaperToggleButtonElement paperToggleButtonElement = new PaperToggleButtonElement();
         paperToggleButtonElement.addToggleChangeEventlistener(e->this.toggleClick(e));
         Div layout = new Div();
         layout.add(hello,paperToggleButtonElement,colorPickerElement);

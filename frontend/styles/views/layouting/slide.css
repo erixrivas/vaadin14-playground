@@ -1,5 +1,11 @@
 .slide{}
 
+.slide-div{
+display:grid;
+/*width:100%;*/
+}
+
+
 .text-div{
   border: calc(0px + 0.2em) solid var(--lumo-header-text-color);
   border-radius: var(--lumo-border-radius-m);

@@ -4,11 +4,12 @@
     <artifactId>vaadinplayground</artifactId>
     <name>VaadinPlayground</name>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <properties>
         <java.version>11</java.version>
         <vaadin.version>14.4.6</vaadin.version>
+
     </properties>
 
     <parent>
@@ -154,6 +155,24 @@
             <artifactId>webdrivermanager</artifactId>
             <version>3.8.1</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.wontlost</groupId>
+            <artifactId>zxing-vaadin</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>sk.smartbase.component</groupId>
+            <artifactId>barcode-scanner</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.4.30.Final</version>
         </dependency>
     </dependencies>
 

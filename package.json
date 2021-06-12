@@ -51,7 +51,8 @@
       "chance": "1.1.7",
       "@vaadin/vaadin-avatar": "1.0.0",
       "open": "^7.2.1",
-      "@polymer/paper-input": "3.0.2"
+      "@polymer/paper-input": "3.0.2",
+      "quagga": "0.12.1"
     },
     "devDependencies": {
       "webpack-babel-multi-target-plugin": "2.3.3",
@@ -64,7 +65,7 @@
       "webpack-merge": "4.2.2",
       "webpack-dev-server": "3.11.0"
     },
-    "hash": "e240d56e67978fd2ef1298672755b41d9fb66192f510b18502de3bacb649aa59"
+    "hash": "c0c6db7521b6e9a9f34a8cb32d404d0079046434806ed3f9b0480472792646ee"
   },
   "dependencies": {
     "@polymer/iron-icon": "3.0.1",
@@ -114,10 +115,12 @@
     "@vaadin/vaadin-time-picker": "2.4.0",
     "@vaadin/vaadin-upload": "4.4.1",
     "@webcomponents/webcomponentsjs": "^2.2.10",
+    "@zxing/library": "^0.18.4",
     "cdigit": "2.5.6",
     "chance": "1.1.7",
     "lit-element": "^2.2.1",
-    "open": "^7.2.1"
+    "open": "^7.2.1",
+    "quagga": "0.12.1"
   },
   "devDependencies": {
     "webpack-babel-multi-target-plugin": "2.3.3",

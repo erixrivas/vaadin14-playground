@@ -3,6 +3,7 @@ package com.erixrivas.vaadinplayground.views.main;
 import java.util.Optional;
 
 import com.erixrivas.vaadinplayground.views.layout.Layouting;
+import com.erixrivas.vaadinplayground.views.utilities.UIZXingVaadinReaderDemo;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentUtil;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -26,6 +27,7 @@ import com.erixrivas.vaadinplayground.views.main.MainView;
 import com.erixrivas.vaadinplayground.views.helloworld.HelloWorldView;
 import com.erixrivas.vaadinplayground.views.about.AboutView;
 import com.vaadin.flow.theme.lumo.Lumo;
+import org.h2.command.ddl.CreateTable;
 
 /**
  * The main view is a top-level placeholder for other views.
@@ -88,7 +90,8 @@ public class MainView extends AppLayout {
     private Component[] createMenuItems() {
         return new Tab[]{createTab("Hello World", HelloWorldView.class),
                 createTab("About", AboutView.class),
-                createTab("LayOuting", Layouting.class)
+                createTab("LayOuting", Layouting.class),
+                createTab("QR DEMO", UIZXingVaadinReaderDemo.class)
         };
     }
 

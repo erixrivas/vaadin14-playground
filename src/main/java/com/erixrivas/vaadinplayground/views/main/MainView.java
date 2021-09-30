@@ -24,7 +24,7 @@ import com.vaadin.flow.router.RouterLink;
 import com.vaadin.flow.server.PWA;
 import com.vaadin.flow.theme.Theme;
 import com.erixrivas.vaadinplayground.views.main.MainView;
-import com.erixrivas.vaadinplayground.views.helloworld.HelloWorldView;
+import com.erixrivas.vaadinplayground.views.polymerTemplateExample.PolymerTemplateExample;
 import com.erixrivas.vaadinplayground.views.about.AboutView;
 import com.vaadin.flow.theme.lumo.Lumo;
 import org.h2.command.ddl.CreateTable;
@@ -88,7 +88,7 @@ public class MainView extends AppLayout {
     }
 
     private Component[] createMenuItems() {
-        return new Tab[]{createTab("Hello World", HelloWorldView.class),
+        return new Tab[]{createTab("POLYMER ELEMENT EXAMPLE", PolymerTemplateExample.class),
                 createTab("About", AboutView.class),
                 createTab("LayOuting", Layouting.class),
                 createTab("QR DEMO", UIZXingVaadinReaderDemo.class)
